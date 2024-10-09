@@ -1,7 +1,7 @@
-## Complex Data Extraction Using LLMs
+# Complex Data Extraction Using LLMs
 This Repo aims at evaluating the (Document Intelligence+LLM) technique for entity extraction from Complex Tax Documents. We use schema2doc mapping based on Document Intelligence (DI) output of the processed document. DI provides a JSON or Markdown output format, including the styles information. Using LLM prompting, we ask the LLM (GPT4o) to process the DI output and provide a JSON format with the defined schema.
 
-# Getting Started
+## Getting Started
 
 ### **1. Setting Up Azure Resources**
 #### 1.1 Prerequisites
