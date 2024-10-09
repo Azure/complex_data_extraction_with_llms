@@ -1,13 +1,15 @@
+## Complex Data Extraction Using LLMs
+This Repo aims at evaluating the (Document Intelligence+LLM) technique for entity extraction from Complex Tax Documents. We use schema2doc mapping based on Document Intelligence (DI) output of the processed document. DI provides a JSON or Markdown output format, including the styles information. Using LLM prompting, we ask the LLM (GPT4o) to process the DI output and provide a JSON format with the defined schema.
 
 # Getting Started
 
-### 1. Setting Up Azure Resources
+### **1. Setting Up Azure Resources**
 #### 1.1 Prerequisites
     1. Azure account: Create azure account by [signing up here](https://azure.microsoft.com/)
     2. Azure CLI: Install the Azure CLI from [here](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli).
 
-#### 1.2 Steps
-##### 1.2.1 Login to Azure
+#### **1.2 Steps**
+#### 1.2.1 Login to Azure
 Open your terminal and login to your Azure account:
 ```bash
 az login
@@ -18,11 +20,11 @@ az account set --subscription "your-subscription-id"
 ```
 
 #### 1.2.2 Creating needed resources
-##### 1.2.2.1 Create a resource group (if you don't have one):
+#### 1.2.2.1 Create a resource group (if you don't have one):
 ``` bash
 az group create --name <resource_group_name> --location <region>
 ```
-##### 1.2.2.2 Create azure openAI resource
+#### 1.2.2.2 Create azure openAI resource
 1. In your Azure portal, click on “Create a resource”.
 2. Search for “OpenAI” and select it.
 3. Click on “Create” and fill in the necessary details such as name, subscription, resource group, etc.
@@ -30,7 +32,7 @@ az group create --name <resource_group_name> --location <region>
 5. Once the deployment is complete, go to the resource page.
 6. Under “Keys and Endpoint”, you can find your key and endpoint. Save these for later use.
 
-##### 1.2.2.3 Create Document Intelligence Resource
+#### 1.2.2.3 Create Document Intelligence Resource
 1. In your Azure portal, click on “Create a resource”.
 2. Search for “Document Intelligence” and select it.
 3. Click on “Create” and fill in the necessary details.
@@ -38,7 +40,7 @@ az group create --name <resource_group_name> --location <region>
 5. Once the deployment is complete, go to the resource page.
 6. Under “Keys and Endpoint”, you can find your key and endpoint. Save these for later use.
 
-##### 1.2.2.4 Create Azure Search Resource
+#### 1.2.2.4 Create Azure Search Resource
 1. In your Azure portal, click on “Create a resource”.
 2. Search for “Azure Search” and select it.
 3. Click on “Create” and fill in the necessary details.
@@ -46,11 +48,11 @@ az group create --name <resource_group_name> --location <region>
 5. Once the deployment is complete, go to the resource page.
 6. Under “Keys and Endpoint”, you can find your key and endpoint. Save these for later use.
 
-##### 1.2.2.5 Get the Azure Tenant ID
+#### 1.2.2.5 Get the Azure Tenant ID
 1. In your Azure portal, Click on Azure Active Directory in the left-hand menu.
 3. Your Tenant ID is listed as Directory ID on the default page.
 
-##### 1.2.2.6 Get the Azure Client ID and Client Secret
+#### 1.2.2.6 Get the Azure Client ID and Client Secret
 1. In the Azure portal, click on App Registrations in the left-hand menu under Azure Active Directory.
 3. Click on New Registration at the top.
 5. Fill in the details such as name, supported account types, and redirect URI (if necessary), then click Register.
@@ -59,7 +61,7 @@ az group create --name <resource_group_name> --location <region>
 11. Click on New client secret, add a description, select an expiry period, and click Add.
 13. After the client secret is created, copy the Value. This is your Client Secret.
 
-### 2. Create environment variables in .env file 
+### **2. Create environment variables in .env file**
 # 2.1 Creating a .env file
 1. Open your code editor or terminal.
 2. Navigate to the root directory of your project.
@@ -82,7 +84,7 @@ az group create --name <resource_group_name> --location <region>
 
    ```
 
-### 3. Creating a virtual environment
+### **3. Creating a virtual environment**
 It is recommended that Python virtual environments are used for local branch development.
 Then main advantage of using virtual environments is that you can create a separate workspace environment for a branch, so that yo can safely install, remove or upgrade a library without affecting other environments.
 `venv` docs: https://docs.python.org/3/library/venv.html
