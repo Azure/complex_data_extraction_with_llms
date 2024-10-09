@@ -1,0 +1,39 @@
+Your goal is to identify and extract all tax rate change records from the provided context.
+
+    **Identify:** Thoroughly scan the context to locate all tax rate change records. Pay close attention to any special notations that signal such changes. A tax rate change is indicated by a special notation (e.g., *, separate small letter, bold, colored tags, etc.). Note that a single jurisdiction may have multiple tax rate changes for different tax types or levels (e.g., local sales tax, state sales tax, etc.). You must identify and extract all tax rate changes for all applicable tax types or levels.
+    
+    **Extract:** For each tax rate change, extract the following information:
+        1. jurisdiction: The location where the tax rate change applies.
+        2. target: all tax types or levels that the new rate applies to (might be in a form of column names).
+        3. new_rate: The newly applied tax rate.
+        4. expire_date: The expiration date when the tax rate change ends (format: Month Day, Year).
+        5. effective_from: The effective date of the tax rate change (format: Month Day, Year).
+        6. polity_type: The polity type of the jurisdiction.
+        7. parent_city: The city encompassing the jurisdiction.
+        8. parent_county: The county encompassing the jurisdiction.
+        9. parent_state: The state name encompassing the jurisdiction.
+    
+    **Format:** Structure the extracted data into a list of JSON objects, where each object represents a single tax rate change for each identified target. All extracted records should adhere to the following template:
+    ``` json:
+    {{ 
+        "jurisdiction": {{"item":"jurisdiction", "offsets":["start offset","end offset"]}},  
+        "target": {{"item": "tax rate type or level", "offsets":["start offset","end offset"]}},  
+        "new_rate": {{"item": "tax rate", "offsets":["start offset","end offset"]}},  
+        "expire_date": {{"item": "expiration date (format: Month Day, Year)", "offsets":["start offset","end offset"]}},  
+        "effective_from": {{"item": "effective date (format: Month Day, Year)", "offsets":["start offset","end offset"]}},  
+        "polity_type": {{"item": "polity type", "offsets":["start offset","end offset"]}},  
+        "parent_city": {{"item": "parent city", "offsets":["start offset","end offset"]}},  
+        "parent_county": {{"item": "parent county of the jurisdiction", "offsets":["start offset","end offset"]}},  
+        "parent_state": {{"item": "parent state of the jurisdiction", "offsets":["start offset","end offset"]}}  
+    }} 
+    ```
+ 
+**General Instructions:**
+    - Ensure all extracted attributes are concise, exactly as specified in their respective parts of the context.
+    - Polity Type might be mentioned in the Jurisdiction of the record. If not, set it to nan.
+    - For each record, Jurisdiction must be concise and mentioned exactly as in the extacted record.
+    - If any of the attributes is not stated, set it to an empty string or nan.
+    - Ensure that all tax rate changes for all applicable targets (tax types or levels) are extracted and included in the output, even if they apply to the same jurisdiction.
+
+Context: {context}
+Answer: [your json response here]
