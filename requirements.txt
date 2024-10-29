@@ -2,7 +2,7 @@ regex==2024.5.15
 azure-storage-blob==12.20.0
 azure-identity==1.16.1
 azure-ai-documentintelligence==1.0.0b3
-langchain==0.1.20
+langchain==0.3.0
 langchain_openai==0.1.7
 azure-search-documents==11.4.0
 tqdm==4.66.4
